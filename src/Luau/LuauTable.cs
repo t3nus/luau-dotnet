@@ -44,6 +44,7 @@ public unsafe sealed class LuauTable : ILuauReference, IDisposable, IEnumerable<
             state.Push(key);
             lua_gettable(state.AsPointer(), -2);
             var result = state.Pop();
+            lua_pop(state.AsPointer(), 1);
             return result;
         }
         set
